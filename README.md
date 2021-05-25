@@ -18,6 +18,11 @@ rdkit >= 2019.03.4.0
 
 Please install dependencies and requirements for running the model from Reference 1.
 
+**Generate a database;**
+
+python generate_3D_Scaffold.py
+
+Move the generated database file 'Scaffold3D.db' to ./data/ folder 
 
 **Training a model;**
 To train a model with same hyperparameters as described in paper;
