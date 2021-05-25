@@ -9,17 +9,11 @@
 **Requirements**
 
 gschnet
-
 schnetpack 0.3
-
 pytorch >= 1.2
-
 python >= 3.7
-
 ASE >= 3.17.0
-
 Open Babel 2.41
-
 rdkit >= 2019.03.4.0
 
 Please install dependencies and requirements for running the model from Reference 1.
