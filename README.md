@@ -1,7 +1,7 @@
 ****3D-Scaffold: Deep Generative Framework to Generate 3D-ccordinates of Molecules with Desired Scaffolds.****
 
-![molecule](Visual.gif){ width=50% }
-![molecule2](Architecture.png){ width=50% }
+![molecule](Visual.gif){smaller}
+![molecule2](Architecture.png){small}
 
 
 3D-Scaffold framework is built on top of GSchNet model[1].
