@@ -36,5 +36,5 @@ python filter_generated.py ./model/generated/scaffold.mol_dict
 Python write_xyz.py
 
 
-References
+**References;**
 1. Gebauer, N.; Gastegger, M.; Sch ̈utt, K. Symmetry-adapted generation of 3d point setsfor  the  targeted  discovery  of  molecules.  Advances  in  Neural  Information  ProcessingSystems. 2019; pp 7566–7578.
