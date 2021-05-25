@@ -29,10 +29,12 @@ python ./scaffold3D.py train 3D_Scaffold ./data/ ./model --split 2000 500 --cuda
 python ./scaffold3D.py generate 3D_Scaffold  ./model/ 100 --functional_group 'C=CC(=O)N' --chunk_size 100 --max_length 65 --file_name scaffold
 
 **Filter the generated molecules;**
+
 python filter_generated.py ./model/generated/scaffold.mol_dict
 
 
 **Write generated molecules in to xyz file**
+
 Python write_xyz.py
 
 
