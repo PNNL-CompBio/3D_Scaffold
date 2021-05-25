@@ -1,4 +1,4 @@
-****3D-Scaffold: Deep Generative Framework to Generate 3D-ccordinates of Molecules with Desired Scaffolds.****
+****3D-Scaffold: Deep Generative Framework to Generate 3D-Cordinates of Molecules with Desired Scaffolds.****
 
 ![molecule](Visual.gif)
 ![molecule2](Architecture.png)
