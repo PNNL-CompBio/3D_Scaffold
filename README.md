@@ -4,7 +4,7 @@
 
 
 
-3D-Scaffold generates entire molecules with desired scaffolds in an autoregressive fashion, placing one atom after another in 3d Euclidean space of scaffolds. It only uses the 3D positions and types of atoms in a molecule along with the SMILES string of scaffold as an input and generates novel therapeutic candidates as output. 3D-Scaffold framework is built on top of GSchNet model[1].
+3D-Scaffold generates entire molecules with desired scaffolds in an autoregressive fashion, placing one atom after another in 3d Euclidean space of scaffolds. It only uses the 3D positions and types of atoms in a molecule along with the SMILES string of scaffold as an input and generates novel therapeutic candidates as output. 3D-Scaffold framework is built on top of G-SchNet [1].
 
 
 **Requirements**
