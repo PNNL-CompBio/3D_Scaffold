@@ -6,13 +6,12 @@ import tarfile
 import tempfile
 from urllib import request as request
 from urllib.error import HTTPError, URLError
-from base64 import b64encode, b64decode
 
 import numpy as np
 import torch
 from ase.db import connect
 from ase_io_extxyz import read_xyz
-from ase.units import Debye, Bohr, Hartree, eV
+#from ase.units import Debye, Bohr, Hartree, eV
 
 from schnetpack import Properties
 from schnetpack.datasets import DownloadableAtomsData
@@ -91,7 +90,7 @@ class scaffold3Dgen(DownloadableAtomsData):
     def __init__(self, path, subset=None, download=True, precompute_distances=True,
                  remove_invalid=True):
         self.path = path
-        self.dbpath = os.path.join(self.path,f'scaffold3Dgen.db')#
+        self.dbpath = os.path.join(self.path,'scaffold3Dgen.db')#
         self.precompute_distances = precompute_distances
         self.remove_invalid = remove_invalid
     
@@ -149,7 +148,7 @@ class scaffold3Dgen(DownloadableAtomsData):
     def _download(self):
         works = True
         if not os.path.exists(self.dbpath):
-            scaffold3D_path = os.path.join(self.path, f'scaffold3D.db')
+            scaffold3D_path = os.path.join(self.path, 'scaffold3D.db')
             if not os.path.exists(scaffold3D_path):
                 works = works and self._load_data()
             works = works and self._preprocess_scaffold3D()
@@ -231,7 +230,7 @@ class scaffold3Dgen(DownloadableAtomsData):
             invalid_list = None
         # check validity of molecules and store connectivity matrices and inter-atomic
         # distances in database as a pre-processing step
-        scaffold3D_db = os.path.join(self.path, f'scaffold3D.db')
+        scaffold3D_db = os.path.join(self.path, 'scaffold3D.db')
         valence_list = \
             np.array([self.available_atom_types, self.atom_types_valence]).flatten('F')
         preprocess_dataset(datapath=scaffold3D_db, valence_list=valence_list,

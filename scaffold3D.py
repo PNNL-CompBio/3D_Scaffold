@@ -599,15 +599,15 @@ def main(args):
                 logging.info(f'fetching latest checkpoint from pre-trained model at '
                              f'{pretrained_chkpt_path}...')
                 if not os.path.exists(pretrained_chkpt_path):
-                    logging.warning(f'did not find checkpoints of pre-trained model, '
-                                    f'will train from scratch...')
+                    logging.warning('did not find checkpoints of pre-trained model, '
+                                    'will train from scratch...')
                     args.pretrained_path = None
                 else:
                     chkpt_files = [f for f in os.listdir(pretrained_chkpt_path)
                                    if f.startswith("checkpoint")]
                     if len(chkpt_files) == 0:
-                        logging.warning(f'did not find checkpoints of pre-trained '
-                                        f'model, will train from scratch...')
+                        logging.warning('did not find checkpoints of pre-trained '
+                                        'model, will train from scratch...')
                         args.pretrained_path = None
                     else:
                         epoch = max([int(f.split(".")[0].split("-")[-1])
@@ -691,7 +691,7 @@ def main(args):
     # load model or checkpoint for evaluation or generation
     if args.mode in ['eval', 'generate']:
         if args.checkpoint < 0:  # load best model
-            logging.info(f'restoring best model')
+            logging.info('restoring best model')
             model = torch.load(os.path.join(args.modelpath, 'best_model')).to(device)
         else:
             logging.info(f'restoring checkpoint {args.checkpoint}')

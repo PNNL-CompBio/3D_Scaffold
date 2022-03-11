@@ -2,22 +2,27 @@ from ase.db import connect
 import os
 import re
 from ase.io.extxyz import read_xyz
-from ase.units import Debye, Bohr, Hartree, eV
-from schnetpack import Properties
 import shutil
 import tempfile
+import argparse
 
-raw_path = './xyz_files/'
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--xyz_path', type = str, help='Path to directory containing xyz_files for creating database',
+                    default='./xyz_files/')
+
+args = parser.parse_args()
+
 tmpdir = tempfile.mkdtemp('temporary')
 
 with connect(os.path.join('scaffold3D.db')) as con:
-    ordered_files = sorted(os.listdir(raw_path),
+    ordered_files = sorted(os.listdir(args.xyz_path),
                            key=lambda x: (int(re.sub('\D', '', x)), x))
     for i, xyzfile in enumerate(ordered_files):
-        xyzfile = os.path.join(raw_path, xyzfile)
+        xyzfile = os.path.join(args.xyz_path, xyzfile)
 
         if (i + 1) % 100 == 0:
-            print('Parsed: {:6d} / 133885'.format(i + 1))
+            print('Parsed: {:6d}'.format(i + 1))
         properties = {}
         tmp = os.path.join(tmpdir, 'tmp.xyz')
 

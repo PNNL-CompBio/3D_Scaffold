@@ -512,16 +512,16 @@ def preprocess_dataset(datapath, valence_list, n_threads, n_mols_per_thread=100,
                    f'appended to the list of invalid molecules stored at '
                    f'{datapath.parent / (datapath.stem + f"_invalid.txt")}',
                    flush=True)
-            np.savetxt(datapath.parent / (datapath.stem + f'_invalid.txt'),
+            np.savetxt(datapath.parent / (datapath.stem + '_invalid.txt'),
                        np.append(np.sort(list(invalid_list)), np.sort(inval + disc)),
                        fmt='%d')
     elif remove_invalid:
         _print(f'Identified {len(disc)} disconnected structures, and {len(inval)} '
                f'structures with invalid valence!', flush=True)
-        np.savetxt(datapath.parent / (datapath.stem + f'_invalid.txt'),
+        np.savetxt(datapath.parent / (datapath.stem + '_invalid.txt'),
                    np.sort(inval + disc), fmt='%d')
     _print('\nCompressing and storing statistics with numpy...')
-    np.savez_compressed(new_db_path.parent/(new_db_path.stem+f'_statistics.npz'),
+    np.savez_compressed(new_db_path.parent/(new_db_path.stem+'_statistics.npz'),
                         stats=stats,
                         stat_heads=get_count_statistics(get_stat_heads=True))
 

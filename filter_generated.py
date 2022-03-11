@@ -6,7 +6,7 @@ import time
 
 from scipy.spatial.distance import pdist
 from schnetpack import Properties
-from utility_classes import Molecule, ConnectivityCompressor
+from utility_classes import ConnectivityCompressor
 from utility_functions import update_dict
 from ase import Atoms
 from ase.db import connect
@@ -81,7 +81,7 @@ if __name__ == '__main__':
                 cur_res = pickle.load(f)
                 update_dict(res, cur_res)
         res = dict(sorted(res.items()))  # sort dictionary keys
-        print(f'...done!')
+        print('...done!')
         target_db = os.path.join(args.data_path, 'generated_molecules.db')
 
     # compute array with valence of provided atom types
@@ -302,6 +302,6 @@ if __name__ == '__main__':
                 conn.write(at)
 
     # store gathered statistics in separate file
-    np.savez_compressed(os.path.splitext(target_db)[0] + f'_statistics.npz',
+    np.savez_compressed(os.path.splitext(target_db)[0] + '_statistics.npz',
                         stats=res['stats'], stat_heads=res['stat_heads'])
 
