@@ -172,12 +172,18 @@ def preprocess_molecules(mol_idcs, source_db, valence,
                 if i in invalid_list:
                     continue
             # get molecule from database
+            try: # see if index exists or was removed [mcnaughtonadm 03112022]
+                source_db.gte(i+1)
+            except: # if removed, skip it [mcnaughtonadm 03112022]
+                continue
+            
             row = source_db.get(i + 1)
             data = row.data
             smiles_string_molecule = row.data['Smiles_String']
             smiles_string_func_grp = row.data['Functional_Group']
             print("smiles string molecule",smiles_string_molecule)
             print("smiles string functional group",smiles_string_func_grp)
+            print(f"Molecule ID: {i+1}")
             m = Chem.MolFromSmiles(smiles_string_molecule)
             functional_group = Chem.MolFromSmiles(smiles_string_func_grp)
             #fgs = identify_functional_groups(m)
@@ -277,9 +283,9 @@ def preprocess_molecules(mol_idcs, source_db, valence,
             # print progress if desired
             if print_progress:
                 if i % 100 == 0:
-                    print('\033[K', end='\r', flush=True)
-                    print(f'{100 * (i + 1) / n_all:.2f}%', end='\r', flush=True)
-
+                    #print('\033[K', end='\r', flush=True)
+                    #print(f'{100 * (i + 1) / n_all:.2f}%', end='\r', flush=True)
+                    print(f'Number of molecules processed: {i}')
     return mols, data_list, stats, inval, disc, count
 
 
